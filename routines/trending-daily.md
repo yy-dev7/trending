@@ -15,14 +15,20 @@
    不要照抄英文简介，用你自己的话概括。
 4. 套用仓库根目录下 `_template.html`（源流·杂志版）的样式和结构填充：
    - HERO 的 `LEAD_DECK`：一句引言概述当日榜单看点。
-   - FEATURE（焦点项目）= 第 1 名：填 owner/repo、2–3 句中文说明、总 star、今日新增；
-     右侧配图用 `https://github.com/{owner}.png`（owner 头像）。
+   - FEATURE（焦点项目）= 第 1 名：填 owner/repo、2–3 句中文说明、总 star、今日新增。
+   - 焦点项目配图 `LEAD_IMG`：优先取该仓库 README 的首张代表性图片——
+     · 抓 raw README（试 `main`/`master` 或读默认分支），按顺序提取 `![](…)` 与 `<img src>`；
+     · **过滤掉徽章**（URL 含 `shields.io` / `badge` / `flat-square` 等）；
+     · 相对路径转 `https://raw.githubusercontent.com/{owner}/{repo}/{分支}/{路径}`；
+     · 取第一张真图；**找不到或无法加载时，回退到** `https://github.com/{owner}.png`（头像）。
    - `PULL_QUOTE`：一句点睛的「今日观察」金句。
    - RANKING（今日榜单）= 第 2–10 名，共 9 行，按今日新增 star 降序。
    - 「趋势观察」写 3 段（壹/贰/叁）展开分析，总结当天热榜的整体倾向。
    - 顶栏 `DATE_DOT` 用点分日期（如 2026.06.19）。
-5. 保存为 `reports/YYYY-MM-DD.html`（用今天的日期），并更新 `reports/index.html`，
-   在 `<!-- LATEST -->` 标记下方加一条指向今天这份的链接（最新在最上方）。
+5. 保存为 `reports/YYYY-MM-DD.html`（用今天的日期），并更新两处索引：
+   - `reports/index.html`：在 `<!-- LATEST -->` 标记下方加一条指向今天这份的链接（最新在最上方）。
+   - `index.html`（首页）：把 `data-latest="trending"` 那个 `<a>` 的 `href`
+     改成 `reports/YYYY-MM-DD.html`（即首页「阅读今日」直达当天报告）。
 6. 提交改动并推送（提交信息：「trending 日报 + 日期」）。
 
 注意：如果抓取失败或不足 10 个项目，在 HTML 顶部明确标注数据可能不完整（保留模板里的

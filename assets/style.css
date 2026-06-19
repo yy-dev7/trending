@@ -113,15 +113,13 @@ body {
   border: 1px solid var(--line);
   margin-top: 28px;
 }
-.landing-cards a {
-  display: block;
+.landing-cards .card {
+  display: flex;
+  flex-direction: column;
   background: var(--bg);
   padding: 34px 30px;
-  text-decoration: none;
   color: var(--ink);
-  transition: background 0.15s;
 }
-.landing-cards a:hover { background: #f1eadd; }
 .landing-cards .kicker {
   font-family: var(--sans);
   font-size: 11px;
@@ -136,7 +134,32 @@ body {
   font-size: 26px;
   margin: 0 0 10px;
 }
-.landing-cards p { margin: 0; color: #4a463f; font-size: 15px; line-height: 1.7; }
+.landing-cards p { margin: 0 0 22px; color: #4a463f; font-size: 15px; line-height: 1.7; }
+.landing-cards .card-actions {
+  margin-top: auto;
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+}
+.landing-cards .go {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--bg);
+  background: var(--accent);
+  text-decoration: none;
+  padding: 9px 16px;
+}
+.landing-cards .go:hover { background: #5e2018; }
+.landing-cards .ghost {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.landing-cards .ghost:hover { border-bottom-color: var(--accent); }
 
 /* ---------- Footer ---------- */
 .foot {
