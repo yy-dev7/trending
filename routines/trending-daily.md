@@ -16,11 +16,14 @@
 4. 套用仓库根目录下 `_template.html`（源流·杂志版）的样式和结构填充：
    - HERO 的 `LEAD_DECK`：一句引言概述当日榜单看点。
    - FEATURE（焦点项目）= 第 1 名：填 owner/repo、2–3 句中文说明、总 star、今日新增。
-   - 焦点项目配图 `LEAD_IMG`：优先取该仓库 README 的首张代表性图片——
-     · 抓 raw README（试 `main`/`master` 或读默认分支），按顺序提取 `![](…)` 与 `<img src>`；
+   - 焦点项目配图 `LEAD_IMG`：优先取该仓库 README 的代表性图片——
+     · 抓 raw README（试 `main`/`master` 或读默认分支），**扫描整个正文**提取 `![](…)` 与
+       `<img src>`（不要只看开头几张，很多 README 开头全是徽章、真图在后面）；
      · **过滤掉徽章**（URL 含 `shields.io` / `badge` / `flat-square` 等）；
-     · 相对路径转 `https://raw.githubusercontent.com/{owner}/{repo}/{分支}/{路径}`；
-     · 取第一张真图；**找不到或无法加载时，回退到** `https://github.com/{owner}.png`（头像）。
+     · 相对路径（如 `docs/x.png`）转 `https://raw.githubusercontent.com/{owner}/{repo}/{分支}/{路径}`；
+     · 取过滤后第一张真图作为 `LEAD_IMG`。
+     · README 没有真图时，`LEAD_IMG` 填 GitHub OG 卡片 `https://opengraph.githubassets.com/0/{owner}/{repo}`
+       （模板已内置 OG→头像两级兜底，故 LEAD_IMG 填 README 真图或 OG 卡片均可）。
    - `PULL_QUOTE`：一句点睛的「今日观察」金句。
    - RANKING（今日榜单）= 第 2–10 名，共 9 行，按今日新增 star 降序。
    - 「趋势观察」写 3 段（壹/贰/叁）展开分析，总结当天热榜的整体倾向。

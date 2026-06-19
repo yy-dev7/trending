@@ -8,13 +8,17 @@
   结构与填充规则：
   - 取 daily 窗口、全部语言的 Trending 前 10 名，按今日新增 star 降序。
   - FEATURE（焦点项目）= 第 1 名；RANKING（今日榜单）= 第 2–10 名（共 9 行）。
-  - 焦点项目右侧配图（LEAD_IMG）优先取该仓库 README 的首张「代表性」图片：
-      · 抓 raw README，按顺序提取 ![](…) 与 <img src>；
+  - 焦点项目右侧配图（LEAD_IMG）优先取该仓库 README 的「代表性」图片：
+      · 抓 raw README，扫描【整个正文】提取 ![](…) 与 <img src>（不要只看开头几张，
+        很多 README 开头全是徽章、真图在后面）；
       · 过滤掉徽章（URL 含 shields.io / badge / flat-square 等）；
-      · 相对路径（如 ./.img/x.svg）转为 https://raw.githubusercontent.com/{owner}/{repo}/{分支}/{路径}；
-      · 取第一张真图作为 LEAD_IMG；找不到或无法加载时，回退到 owner 头像
-        https://github.com/{{LEAD_OWNER}}.png。
-    （配图框用 object-fit:contain，横图/竖图都能完整显示，不会被裁。）
+      · 相对路径（如 docs/x.png、./.img/y.svg）转为
+        https://raw.githubusercontent.com/{owner}/{repo}/{分支}/{路径}；
+      · 取过滤后的第一张真图作为 LEAD_IMG。
+    模板已内置两级兜底（无需手动处理）：LEAD_IMG 加载失败 → GitHub OG 卡片
+    https://opengraph.githubassets.com/0/{owner}/{repo} → 再失败 → owner 头像。
+    若 README 实在没有真图，LEAD_IMG 可直接填 OG 卡片地址。
+    （配图框 object-fit:contain，横图/竖图都完整显示，不会被裁。）
   - PULL QUOTE 写一句点睛的「今日观察」金句；下方「趋势观察」写 3 段更展开的分析。
   - 抓取失败或不足 10 个项目时，保留顶部 .dc-warning 节点并写明原因，否则删除它。
   - 不要编造仓库或数字；中文描述用自己的话概括，不要照抄英文简介。
@@ -27,6 +31,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../assets/favicon/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/favicon-180-precomposed.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="../assets/favicon/favicon-152-precomposed.png" />
+  <link rel="manifest" href="../assets/favicon/site.webmanifest" />
+  <meta name="theme-color" content="#7c2d22" />
   <style>
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
@@ -79,7 +89,7 @@
       </div>
       <div style="aspect-ratio:4/3; background:#efe7d8; border:1px solid #7c2d22; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:18px">
         <img src="{{LEAD_IMG}}" alt="{{LEAD_OWNER}}/{{LEAD_REPO}}"
-             onerror="this.onerror=null; this.src='https://github.com/{{LEAD_OWNER}}.png'; this.style.objectFit='cover'; this.parentNode.style.padding='0'"
+             onerror="this.onerror=function(){this.onerror=null;this.src='https://github.com/{{LEAD_OWNER}}.png';this.style.objectFit='cover';this.parentNode.style.padding='0'}; this.src='https://opengraph.githubassets.com/0/{{LEAD_OWNER}}/{{LEAD_REPO}}'; this.style.objectFit='cover'; this.parentNode.style.padding='0'"
              style="max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain" />
       </div>
     </div>
