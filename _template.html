@@ -1,86 +1,128 @@
 <!DOCTYPE html>
 <!--
-  GitHub Trending 日报模板
-  ========================
-  生成日报时：复制本文件的结构与样式，把数据填入对应位置，另存为
-  reports/YYYY-MM-DD.html。下面用 {{ }} 标注占位符，用 <!-- 注释 --> 说明规则。
+  GitHub Trending 日报模板（源流·杂志版）
+  =====================================
+  生成日报时：复制本文件，把 {{占位符}} 替换为真实数据，另存为 reports/YYYY-MM-DD.html。
+  本模板自包含（内联样式 + Google Fonts），不依赖外部 CSS。
 
-  关键规则：
-  - 取 daily 窗口、全部语言的 Trending 前 10 名。
-  - 热度条宽度 = 本仓库今日新增 star / 第 1 名今日新增 star × 100%（style="width:NN%"）。
-  - 抓取失败或不足 10 个项目时，保留并填写顶部 .warning，否则删除该节点。
+  结构与填充规则：
+  - 取 daily 窗口、全部语言的 Trending 前 10 名，按今日新增 star 降序。
+  - FEATURE（焦点项目）= 第 1 名；RANKING（今日榜单）= 第 2–10 名（共 9 行）。
+  - 焦点项目右侧配图用 owner 头像：https://github.com/{{LEAD_OWNER}}.png
+  - PULL QUOTE 写一句点睛的「今日观察」金句；下方「趋势观察」写 3 段更展开的分析。
+  - 抓取失败或不足 10 个项目时，保留顶部 .dc-warning 节点并写明原因，否则删除它。
   - 不要编造仓库或数字；中文描述用自己的话概括，不要照抄英文简介。
 -->
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GitHub Trending 日报 · {{DATE}}</title>
-  <link rel="stylesheet" href="../assets/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>趋势日报 · {{DATE}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    ::selection { background: #7c2d22; color: #f7f3ec; }
+    @media (max-width: 680px) {
+      .dc-feature, .dc-row, .dc-trend { grid-template-columns: 1fr !important; }
+      .dc-hero h1 { font-size: 46px !important; }
+    }
+  </style>
 </head>
 <body>
-  <main class="wrap">
-    <header class="page-head">
-      <h1>GitHub Trending 日报</h1>
-      <div class="sub">{{DATE}} · daily 窗口 · 全部语言 · 前 10 名</div>
-      <nav class="nav">
-        <a href="../index.html">← 首页</a>
-        <a href="index.html">全部日报</a>
-        <a href="../news/index.html">行业动态</a>
-      </nav>
-    </header>
+<div style="background:#f7f3ec; color:#201f1c; min-height:100vh; font-family:'Noto Serif SC',serif">
+  <div style="max-width:880px; margin:0 auto; padding:46px 44px 72px">
 
-    <!-- 数据完整时删除下面这个 .warning 节点；不完整时保留并说明原因 -->
-    <div class="warning">
+    <!-- TOP BAR -->
+    <div style="display:flex; justify-content:space-between; align-items:center; font-family:'Noto Sans SC',sans-serif; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#7c2d22; border-bottom:1px solid #7c2d22; padding-bottom:12px">
+      <span style="font-weight:700">源流 / Liú · 趋势日报</span>
+      <span style="color:#6b6258">{{DATE_DOT}}</span>
+    </div>
+
+    <!-- 导航（生成的报告里保留，方便回到归档/首页） -->
+    <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; letter-spacing:0.06em; padding-top:10px">
+      <a href="../index.html" style="color:#7c2d22; text-decoration:none; margin-right:16px">← 首页</a>
+      <a href="index.html" style="color:#7c2d22; text-decoration:none; margin-right:16px">全部日报</a>
+      <a href="../news/index.html" style="color:#7c2d22; text-decoration:none">行业动态</a>
+    </div>
+
+    <!-- WARNING：数据完整时删除整个 .dc-warning 节点；不完整时保留并写明原因 -->
+    <div class="dc-warning" style="margin-top:24px; border:1px solid #7c2d22; background:rgba(124,45,34,0.06); padding:14px 18px; font-family:'Noto Sans SC',sans-serif; font-size:13px; color:#7c2d22">
       ⚠️ 本期数据可能不完整：{{原因，例如「抓取仅返回 7 个项目」}}。以下内容仅供参考。
     </div>
 
-    <section class="observation">
-      <strong>今日观察</strong>
-      {{一句话总结当天热榜整体倾向，例如某类工具集中上榜的现象}}
-    </section>
+    <!-- HERO -->
+    <div class="dc-hero" style="padding:64px 0 40px; border-bottom:1px solid rgba(124,45,34,0.35)">
+      <div style="font-family:'Noto Sans SC',sans-serif; font-size:12px; letter-spacing:0.28em; text-transform:uppercase; color:#7c2d22; margin-bottom:26px">GitHub Trending · daily · 全部语言</div>
+      <h1 style="font-family:'Noto Serif SC',serif; font-weight:900; font-size:72px; line-height:1.08; margin:0; letter-spacing:0.01em; text-wrap:balance">今日增长最快的<br><span style="color:#7c2d22; font-style:italic; font-family:'Playfair Display',serif; font-weight:900">开源项目</span>们</h1>
+      <p style="font-family:'Noto Serif SC',serif; font-size:19px; line-height:1.6; color:#4a463f; max-width:60ch; margin:28px 0 0">{{LEAD_DECK：一句引言，概述当日榜单整体看点}}</p>
+    </div>
 
-    <!-- 重复下面 .repo 块 10 次，rank 从 1 到 10 ------------------------- -->
-    <article class="repo">
-      <div class="rank">1</div>
-      <div class="body">
-        <h2 class="title">
-          <a href="https://github.com/{{owner}}/{{repo}}">{{owner}}/{{repo}}</a>
-        </h2>
-        <p class="desc-en">{{官方英文简介，原样保留}}</p>
-        <p class="desc-zh">{{1–2 句中文：是什么、解决什么问题，用自己的话}}</p>
-        <div class="meta">
-          <span class="lang">{{主要语言}}</span>
-          <span>今日 <b>+{{今日新增 star}}</b></span>
-          <span>总计 <b>{{总 star 数}}</b></span>
+    <!-- FEATURE：第 1 名 -->
+    <div class="dc-feature" style="padding:48px 0; border-bottom:1px solid rgba(124,45,34,0.35); display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center">
+      <div>
+        <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:#7c2d22; margin-bottom:14px">焦点项目</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:700; margin-bottom:14px"><a href="https://github.com/{{LEAD_OWNER}}/{{LEAD_REPO}}" style="color:#201f1c; text-decoration:none">{{LEAD_OWNER}}/{{LEAD_REPO}}</a></div>
+        <p style="font-family:'Noto Serif SC',serif; font-size:16px; line-height:1.7; color:#312f2a; margin:0 0 18px">{{LEAD_FEATURE_BODY：2–3 句中文，说清它是什么、解决什么问题、为何今天爆火}}</p>
+        <div style="display:flex; gap:28px; font-family:'JetBrains Mono',monospace; font-size:14px; border-top:1px solid #7c2d22; padding-top:14px">
+          <span><span style="font-size:20px; font-weight:700; color:#7c2d22">{{LEAD_STARS}}</span> <span style="font-family:'Noto Sans SC',sans-serif; font-size:11px; color:#6b6258">总 Star</span></span>
+          <span><span style="font-size:20px; font-weight:700; color:#7c2d22">▲{{LEAD_TODAY}}</span> <span style="font-family:'Noto Sans SC',sans-serif; font-size:11px; color:#6b6258">今日</span></span>
         </div>
-        <div class="heat"><span style="width:100%"></span></div>
       </div>
-    </article>
+      <div style="aspect-ratio:3/4; background:repeating-linear-gradient(45deg,#ece4d6,#ece4d6 11px,#f2ece0 11px,#f2ece0 22px); border:1px solid #7c2d22; overflow:hidden; display:flex; align-items:center; justify-content:center">
+        <img src="https://github.com/{{LEAD_OWNER}}.png" alt="{{LEAD_OWNER}}" style="width:100%; height:100%; object-fit:cover" />
+      </div>
+    </div>
 
-    <article class="repo">
-      <div class="rank">2</div>
-      <div class="body">
-        <h2 class="title">
-          <a href="https://github.com/owner/repo">owner/repo</a>
-        </h2>
-        <p class="desc-en">Official English description.</p>
-        <p class="desc-zh">用自己的话写的中文功能描述。</p>
-        <div class="meta">
-          <span class="lang">Python</span>
-          <span>今日 <b>+1234</b></span>
-          <span>总计 <b>12,345</b></span>
+    <!-- PULL QUOTE：点睛的「今日观察」金句 -->
+    <div style="padding:52px 0; text-align:center; border-bottom:1px solid rgba(124,45,34,0.35)">
+      <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:32px; line-height:1.4; color:#7c2d22; margin:0 auto; max-width:24ch; text-wrap:balance">“{{PULL_QUOTE}}”</p>
+    </div>
+
+    <!-- RANKING：第 2–10 名，重复 .dc-row 块 9 次 -->
+    <div style="padding:48px 0 0">
+      <h2 style="font-family:'Noto Serif SC',serif; font-size:30px; font-weight:900; margin:0 0 6px; letter-spacing:0.02em">今日榜单</h2>
+      <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#6b6258; margin-bottom:18px">按今日新增 Star 排序</div>
+
+      <div class="dc-row" style="display:grid; grid-template-columns:78px 1fr auto; gap:24px; align-items:center; padding:22px 0; border-top:1px solid rgba(124,45,34,0.28)">
+        <div style="font-family:'Playfair Display',serif; font-size:54px; font-weight:900; line-height:0.8; color:#7c2d22">{{RANK}}</div>
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:5px; flex-wrap:wrap">
+            <a href="https://github.com/{{OWNER}}/{{REPO}}" style="font-family:'JetBrains Mono',monospace; font-size:17px; font-weight:700; color:#201f1c; text-decoration:none">{{OWNER}}/{{REPO}}</a>
+            <span style="font-family:'Noto Sans SC',sans-serif; font-size:10.5px; letter-spacing:0.08em; color:#6b6258">{{LANG}}</span>
+          </div>
+          <p style="font-family:'Noto Serif SC',serif; font-size:14.5px; line-height:1.5; margin:0; color:#4a463f">{{DESC：1–2 句中文功能概括}}</p>
         </div>
-        <!-- 宽度 = 1234 / 第1名今日新增 × 100% -->
-        <div class="heat"><span style="width:62%"></span></div>
+        <div style="text-align:right; font-family:'JetBrains Mono',monospace">
+          <div style="font-size:18px; font-weight:700; color:#7c2d22">▲{{TODAY}}</div>
+          <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; color:#6b6258; margin-top:3px">{{STARS}} ★</div>
+        </div>
       </div>
-    </article>
-    <!-- ... 直到 rank 10 ------------------------------------------------ -->
+      <!-- ... 直到第 10 名 ... -->
+    </div>
 
-    <footer class="foot">
-      数据来源 <a href="https://github.com/trending">github.com/trending</a> ·
-      由 Claude 自动生成 · 生成于 {{DATE}}
-    </footer>
-  </main>
+    <!-- ANALYSIS：3 段趋势观察，重复 .dc-trend 块 -->
+    <div style="padding:54px 0 0">
+      <h2 style="font-family:'Noto Serif SC',serif; font-size:30px; font-weight:900; margin:0 0 28px; letter-spacing:0.02em">趋势观察</h2>
+
+      <div class="dc-trend" style="display:grid; grid-template-columns:140px 1fr; gap:28px; padding:26px 0; border-top:1px solid rgba(124,45,34,0.28)">
+        <div>
+          <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#7c2d22; margin-bottom:8px">趋势 · 壹</div>
+          <h3 style="font-family:'Noto Serif SC',serif; font-size:20px; font-weight:700; line-height:1.32; margin:0">{{TREND_TITLE}}</h3>
+        </div>
+        <p style="font-family:'Noto Serif SC',serif; font-size:15.5px; line-height:1.74; margin:0; color:#312f2a">{{TREND_BODY}}</p>
+      </div>
+      <!-- ... 趋势 · 贰 / 趋势 · 叁 ... -->
+    </div>
+
+    <!-- FOOTER -->
+    <div style="margin-top:54px; border-top:1px solid #7c2d22; padding-top:16px; display:flex; justify-content:space-between; font-family:'Noto Sans SC',sans-serif; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#6b6258">
+      <span>源流 · 趋势日报</span>
+      <span>数据来源 github.com/trending · {{DATE_DOT}}</span>
+    </div>
+  </div>
+</div>
 </body>
 </html>

@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>每日技术日报</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>源流 · 每日技术日报</title>
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
   <main class="wrap">
     <header class="page-head">
-      <h1>每日技术日报</h1>
-      <div class="sub">每天一份 GitHub Trending + 行业动态，由 Claude 自动生成</div>
+      <div class="brand">
+        <span style="font-weight:700">源流 / Liú</span>
+        <span class="right">每日技术日报</span>
+      </div>
+      <h1><em>源流</em>日报</h1>
+      <p class="sub">每天一份 GitHub Trending 与行业动态，由 Claude 自动抓取、汇总并发布。</p>
     </header>
 
     <div class="landing-cards">
       <a href="reports/index.html">
-        <h2>GitHub Trending 日报 →</h2>
-        <p>每天热门开源项目前 10 名，含中文功能解读与热度趋势。</p>
+        <div class="kicker">GitHub Trending</div>
+        <h2>趋势日报 →</h2>
+        <p>每日热门开源项目前 10 名，含中文功能解读、焦点项目与趋势观察。</p>
       </a>
       <a href="news/index.html">
-        <h2>行业动态日报 →</h2>
-        <p>来自行业博客与科技人物的最新动态，中文要点汇总。</p>
+        <div class="kicker">Industry News</div>
+        <h2>行业动态 →</h2>
+        <p>来自一线实验室与科技媒体的官方信源，精选当日动向并附原文链接。</p>
       </a>
     </div>
 
     <footer class="foot">
-      由 <a href="https://github.com/yy-dev7/trending">Claude routines</a> 自动维护
+      <span>源流 · 由 Claude routines 自动维护</span>
+      <span><a href="https://github.com/yy-dev7/trending">GitHub 仓库</a></span>
     </footer>
   </main>
 </body>
