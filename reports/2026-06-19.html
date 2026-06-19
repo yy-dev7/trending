@@ -1,202 +1,241 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GitHub Trending 日报 · 2026-06-19</title>
-  <link rel="stylesheet" href="../assets/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>趋势日报 · 2026-06-19</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    ::selection { background: #7c2d22; color: #f7f3ec; }
+    @media (max-width: 680px) {
+      .dc-feature, .dc-row, .dc-trend { grid-template-columns: 1fr !important; }
+      .dc-hero h1 { font-size: 46px !important; }
+    }
+  </style>
 </head>
 <body>
-  <main class="wrap">
-    <header class="page-head">
-      <h1>GitHub Trending 日报</h1>
-      <div class="sub">2026-06-19 · daily 窗口 · 全部语言 · 前 10 名</div>
-      <nav class="nav">
-        <a href="../index.html">← 首页</a>
-        <a href="index.html">全部日报</a>
-        <a href="../news/index.html">行业动态</a>
-      </nav>
-    </header>
+<div style="background:#f7f3ec; color:#201f1c; min-height:100vh; font-family:'Noto Serif SC',serif">
+  <div style="max-width:880px; margin:0 auto; padding:46px 44px 72px">
 
-    <section class="observation">
-      <strong>今日观察</strong>
-      AI 代理（Agentic）工具浪潮持续涌现——从代码智能 MCP 服务、代理技能框架到一体化编码代理平台，今日热榜中有近半项目与 AI 代理生态直接相关，显示出开发者社区对"让 AI 自主完成工程任务"的强烈关注。
-    </section>
+    <!-- TOP BAR -->
+    <div style="display:flex; justify-content:space-between; align-items:center; font-family:'Noto Sans SC',sans-serif; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#7c2d22; border-bottom:1px solid #7c2d22; padding-bottom:12px">
+      <span style="font-weight:700">源流 / Liú · 趋势日报</span>
+      <span style="color:#6b6258">2026.06.19</span>
+    </div>
 
-    <article class="repo">
-      <div class="rank">1</div>
-      <div class="body">
-        <h2 class="title">
-          <a href="https://github.com/google-research/timesfm">google-research/timesfm</a>
-        </h2>
-        <p class="desc-en">TimesFM (Time Series Foundation Model) is a pretrained time-series foundation model developed by Google Research for time-series forecasting.</p>
-        <p class="desc-zh">TimesFM 是谷歌研究院开发的时序基础模型，专为时间序列预测任务设计。它通过大规模预训练，让开发者无需从零训练即可直接应用于各类时序预测场景。</p>
-        <div class="meta">
-          <span class="lang">Python</span>
-          <span>今日 <b>+844</b></span>
-          <span>总计 <b>23,511</b></span>
+    <!-- 导航（生成的报告里保留，方便回到归档/首页） -->
+    <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; letter-spacing:0.06em; padding-top:10px">
+      <a href="../index.html" style="color:#7c2d22; text-decoration:none; margin-right:16px">← 首页</a>
+      <a href="index.html" style="color:#7c2d22; text-decoration:none; margin-right:16px">全部日报</a>
+      <a href="../news/index.html" style="color:#7c2d22; text-decoration:none">行业动态</a>
+    </div>
+
+    <!-- WARNING：数据完整时删除整个 .dc-warning 节点；不完整时保留并写明原因 -->
+    
+
+    <!-- HERO -->
+    <div class="dc-hero" style="padding:64px 0 40px; border-bottom:1px solid rgba(124,45,34,0.35)">
+      <div style="font-family:'Noto Sans SC',sans-serif; font-size:12px; letter-spacing:0.28em; text-transform:uppercase; color:#7c2d22; margin-bottom:26px">GitHub Trending · daily · 全部语言</div>
+      <h1 style="font-family:'Noto Serif SC',serif; font-weight:900; font-size:72px; line-height:1.08; margin:0; letter-spacing:0.01em; text-wrap:balance">今日增长最快的<br><span style="color:#7c2d22; font-style:italic; font-family:'Playfair Display',serif; font-weight:900">开源项目</span>们</h1>
+      <p style="font-family:'Noto Serif SC',serif; font-size:19px; line-height:1.6; color:#4a463f; max-width:60ch; margin:28px 0 0">今日热榜近半项目与 AI 代理生态直接相关——从代码智能 MCP 服务到一体化编码平台，开发者对「让 AI 自主完成工程任务」的热情仍在升温。</p>
+    </div>
+
+    <!-- FEATURE：第 1 名 -->
+    <div class="dc-feature" style="padding:48px 0; border-bottom:1px solid rgba(124,45,34,0.35); display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center">
+      <div>
+        <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:#7c2d22; margin-bottom:14px">焦点项目</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:700; margin-bottom:14px"><a href="https://github.com/DeusData/codebase-memory-mcp" style="color:#201f1c; text-decoration:none">DeusData/codebase-memory-mcp</a></div>
+        <p style="font-family:'Noto Serif SC',serif; font-size:16px; line-height:1.7; color:#312f2a; margin:0 0 18px">codebase-memory-mcp 是一个高性能代码智能 MCP 服务，能将代码库秒级索引为持久化知识图谱，支持 158 种编程语言，查询延迟低于 1 毫秒，并大幅减少 Token 消耗。以单一静态二进制文件发布、零外部依赖，让 AI 编码助手拥有长期代码记忆能力。</p>
+        <div style="display:flex; gap:28px; font-family:'JetBrains Mono',monospace; font-size:14px; border-top:1px solid #7c2d22; padding-top:14px">
+          <span><span style="font-size:20px; font-weight:700; color:#7c2d22">7,300</span> <span style="font-family:'Noto Sans SC',sans-serif; font-size:11px; color:#6b6258">总 Star</span></span>
+          <span><span style="font-size:20px; font-weight:700; color:#7c2d22">▲2,322</span> <span style="font-family:'Noto Sans SC',sans-serif; font-size:11px; color:#6b6258">今日</span></span>
         </div>
-        <div class="heat"><span style="width:36%"></span></div>
       </div>
-    </article>
+      <div style="aspect-ratio:3/4; background:repeating-linear-gradient(45deg,#ece4d6,#ece4d6 11px,#f2ece0 11px,#f2ece0 22px); border:1px solid #7c2d22; overflow:hidden; display:flex; align-items:center; justify-content:center">
+        <img src="https://github.com/DeusData.png" alt="DeusData" style="width:100%; height:100%; object-fit:cover" />
+      </div>
+    </div>
 
-    <article class="repo">
-      <div class="rank">2</div>
-      <div class="body">
-        <h2 class="title">
-          <a href="https://github.com/n0-computer/iroh">n0-computer/iroh</a>
-        </h2>
-        <p class="desc-en">IP addresses break, dial keys instead. Modular networking stack in Rust.</p>
-        <p class="desc-zh">iroh 是一个用 Rust 编写的模块化网络栈，以"拨号密钥"取代不稳定的 IP 地址，解决网络连接在 IP 变更时频繁中断的问题。适合构建更稳定的点对点通信应用。</p>
-        <div class="meta">
-          <span class="lang">Rust</span>
-          <span>今日 <b>+369</b></span>
-          <span>总计 <b>10,073</b></span>
+    <!-- PULL QUOTE：点睛的「今日观察」金句 -->
+    <div style="padding:52px 0; text-align:center; border-bottom:1px solid rgba(124,45,34,0.35)">
+      <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:32px; line-height:1.4; color:#7c2d22; margin:0 auto; max-width:24ch; text-wrap:balance">“当 AI 能在毫秒间读懂整座代码库，工程的瓶颈就不再是记忆，而是判断。”</p>
+    </div>
+
+    <!-- RANKING：第 2–10 名，重复 .dc-row 块 9 次 -->
+    <div style="padding:48px 0 0">
+      <h2 style="font-family:'Noto Serif SC',serif; font-size:30px; font-weight:900; margin:0 0 6px; letter-spacing:0.02em">今日榜单</h2>
+      <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#6b6258; margin-bottom:18px">按今日新增 Star 排序</div>
+
+      <div class="dc-row" style="display:grid; grid-template-columns:78px 1fr auto; gap:24px; align-items:center; padding:22px 0; border-top:1px solid rgba(124,45,34,0.28)">
+        <div style="font-family:'Playfair Display',serif; font-size:54px; font-weight:900; line-height:0.8; color:#7c2d22">2</div>
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:5px; flex-wrap:wrap">
+            <a href="https://github.com/obra/superpowers" style="font-family:'JetBrains Mono',monospace; font-size:17px; font-weight:700; color:#201f1c; text-decoration:none">obra/superpowers</a>
+            <span style="font-family:'Noto Sans SC',sans-serif; font-size:10.5px; letter-spacing:0.08em; color:#6b6258">Shell</span>
+          </div>
+          <p style="font-family:'Noto Serif SC',serif; font-size:14.5px; line-height:1.5; margin:0; color:#4a463f">superpowers 是一个面向 AI 代理的技能框架与软件开发方法论，提供一套结构化的方式来增强编程代理的能力，让 AI 辅助软件开发流程更加系统化和高效。</p>
         </div>
-        <div class="heat"><span style="width:16%"></span></div>
-      </div>
-    </article>
-
-    <article class="repo">
-      <div class="rank">3</div>
-      <div class="body">
-        <h2 class="title">
-          <a href="https://github.com/freeCodeCamp/freeCodeCamp">freeCodeCamp/freeCodeCamp</a>
-        </h2>
-        <p class="desc-en">freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.</p>
-        <p class="desc-zh">freeCodeCamp 是全球最大的免费编程学习平台之一，提供完整的数学、编程与计算机科学课程体系。完全开源，帮助数百万人零成本学习技术技能。</p>
-        <div class="meta">
-          <span class="lang">TypeScript</span>
-          <span>今日 <b>+417</b></span>
-          <span>总计 <b>449,645</b></span>
+        <div style="text-align:right; font-family:'JetBrains Mono',monospace">
+          <div style="font-size:18px; font-weight:700; color:#7c2d22">▲1,429</div>
+          <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; color:#6b6258; margin-top:3px">232,642 ★</div>
         </div>
-        <div class="heat"><span style="width:18%"></span></div>
       </div>
-    </article>
-
-    <article class="repo">
-      <div class="rank">4</div>
-      <div class="body">
-        <h2 class="title">
-          <a href="https://github.com/obra/superpowers">obra/superpowers</a>
-        </h2>
-        <p class="desc-en">An agentic skills framework &amp; software development methodology that works.</p>
-        <p class="desc-zh">superpowers 是一个面向 AI 代理的技能框架与软件开发方法论，提供一套结构化的方式来增强编程代理的能力。旨在让 AI 辅助软件开发流程更加系统化和高效。</p>
-        <div class="meta">
-          <span class="lang">Shell</span>
-          <span>今日 <b>+1,429</b></span>
-          <span>总计 <b>232,642</b></span>
+<div class="dc-row" style="display:grid; grid-template-columns:78px 1fr auto; gap:24px; align-items:center; padding:22px 0; border-top:1px solid rgba(124,45,34,0.28)">
+        <div style="font-family:'Playfair Display',serif; font-size:54px; font-weight:900; line-height:0.8; color:#7c2d22">3</div>
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:5px; flex-wrap:wrap">
+            <a href="https://github.com/Kilo-Org/kilocode" style="font-family:'JetBrains Mono',monospace; font-size:17px; font-weight:700; color:#201f1c; text-decoration:none">Kilo-Org/kilocode</a>
+            <span style="font-family:'Noto Sans SC',sans-serif; font-size:10.5px; letter-spacing:0.08em; color:#6b6258">TypeScript</span>
+          </div>
+          <p style="font-family:'Noto Serif SC',serif; font-size:14.5px; line-height:1.5; margin:0; color:#4a463f">Kilo 是一个一体化的代理工程平台，集成了最受欢迎的开源编码代理能力，帮助开发团队通过 AI 代理加速构建、发布和迭代软件产品。</p>
         </div>
-        <div class="heat"><span style="width:62%"></span></div>
-      </div>
-    </article>
-
-    <article class="repo">
-      <div class="rank">5</div>
-      <div class="body">
-        <h2 class="title">
-          <a href="https://github.com/zai-org/GLM-5">zai-org/GLM-5</a>
-        </h2>
-        <p class="desc-en">GLM-5: From Vibe Coding to Agentic Engineering</p>
-        <p class="desc-zh">GLM-5 是智谱 AI 最新发布的大语言模型，从"氛围编码"（Vibe Coding）向工程化的代理编程演进。专注于更严谨、可工程化落地的 AI 编程能力。</p>
-        <div class="meta">
-          <span class="lang">—</span>
-          <span>今日 <b>+202</b></span>
-          <span>总计 <b>4,256</b></span>
+        <div style="text-align:right; font-family:'JetBrains Mono',monospace">
+          <div style="font-size:18px; font-weight:700; color:#7c2d22">▲1,345</div>
+          <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; color:#6b6258; margin-top:3px">22,383 ★</div>
         </div>
-        <div class="heat"><span style="width:9%"></span></div>
       </div>
-    </article>
-
-    <article class="repo">
-      <div class="rank">6</div>
-      <div class="body">
-        <h2 class="title">
-          <a href="https://github.com/DeusData/codebase-memory-mcp">DeusData/codebase-memory-mcp</a>
-        </h2>
-        <p class="desc-en">High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph — average repo in milliseconds. 158 languages, sub-ms queries, 99% fewer tokens. Single static binary, zero dependencies.</p>
-        <p class="desc-zh">codebase-memory-mcp 是一个高性能代码智能 MCP 服务，能将代码库秒级索引为持久化知识图谱，支持 158 种编程语言，查询延迟低于 1 毫秒，并大幅减少 Token 消耗。以单一静态二进制文件发布、零外部依赖，让 AI 编码助手拥有长期代码记忆能力。</p>
-        <div class="meta">
-          <span class="lang">C</span>
-          <span>今日 <b>+2,322</b></span>
-          <span>总计 <b>7,300</b></span>
+<div class="dc-row" style="display:grid; grid-template-columns:78px 1fr auto; gap:24px; align-items:center; padding:22px 0; border-top:1px solid rgba(124,45,34,0.28)">
+        <div style="font-family:'Playfair Display',serif; font-size:54px; font-weight:900; line-height:0.8; color:#7c2d22">4</div>
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:5px; flex-wrap:wrap">
+            <a href="https://github.com/google-research/timesfm" style="font-family:'JetBrains Mono',monospace; font-size:17px; font-weight:700; color:#201f1c; text-decoration:none">google-research/timesfm</a>
+            <span style="font-family:'Noto Sans SC',sans-serif; font-size:10.5px; letter-spacing:0.08em; color:#6b6258">Python</span>
+          </div>
+          <p style="font-family:'Noto Serif SC',serif; font-size:14.5px; line-height:1.5; margin:0; color:#4a463f">TimesFM 是谷歌研究院开发的时序基础模型，专为时间序列预测设计。通过大规模预训练，开发者无需从零训练即可直接应用于各类时序预测场景。</p>
         </div>
-        <div class="heat"><span style="width:100%"></span></div>
-      </div>
-    </article>
-
-    <article class="repo">
-      <div class="rank">7</div>
-      <div class="body">
-        <h2 class="title">
-          <a href="https://github.com/alibaba/zvec">alibaba/zvec</a>
-        </h2>
-        <p class="desc-en">A lightweight, lightning-fast, in-process vector database</p>
-        <p class="desc-zh">zvec 是阿里巴巴开源的轻量级进程内向量数据库，以极速性能著称，无需独立部署即可嵌入应用中使用。适合需要向量检索但又不想引入重量级中间件的场景。</p>
-        <div class="meta">
-          <span class="lang">C++</span>
-          <span>今日 <b>+259</b></span>
-          <span>总计 <b>11,342</b></span>
+        <div style="text-align:right; font-family:'JetBrains Mono',monospace">
+          <div style="font-size:18px; font-weight:700; color:#7c2d22">▲844</div>
+          <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; color:#6b6258; margin-top:3px">23,511 ★</div>
         </div>
-        <div class="heat"><span style="width:11%"></span></div>
       </div>
-    </article>
-
-    <article class="repo">
-      <div class="rank">8</div>
-      <div class="body">
-        <h2 class="title">
-          <a href="https://github.com/withastro/flue">withastro/flue</a>
-        </h2>
-        <p class="desc-en">The sandbox agent framework.</p>
-        <p class="desc-zh">flue 是 Astro 团队推出的沙箱代理框架，为 AI 代理提供安全隔离的运行环境。帮助开发者在受控的沙箱中构建和运行自主代理应用。</p>
-        <div class="meta">
-          <span class="lang">TypeScript</span>
-          <span>今日 <b>+162</b></span>
-          <span>总计 <b>5,573</b></span>
+<div class="dc-row" style="display:grid; grid-template-columns:78px 1fr auto; gap:24px; align-items:center; padding:22px 0; border-top:1px solid rgba(124,45,34,0.28)">
+        <div style="font-family:'Playfair Display',serif; font-size:54px; font-weight:900; line-height:0.8; color:#7c2d22">5</div>
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:5px; flex-wrap:wrap">
+            <a href="https://github.com/makeplane/plane" style="font-family:'JetBrains Mono',monospace; font-size:17px; font-weight:700; color:#201f1c; text-decoration:none">makeplane/plane</a>
+            <span style="font-family:'Noto Sans SC',sans-serif; font-size:10.5px; letter-spacing:0.08em; color:#6b6258">TypeScript</span>
+          </div>
+          <p style="font-family:'Noto Serif SC',serif; font-size:14.5px; line-height:1.5; margin:0; color:#4a463f">Plane 是 Jira、Linear 等主流项目管理工具的开源替代方案，提供任务、冲刺、文档与问题分类管理功能，适合追求数据自主可控的团队。</p>
         </div>
-        <div class="heat"><span style="width:7%"></span></div>
-      </div>
-    </article>
-
-    <article class="repo">
-      <div class="rank">9</div>
-      <div class="body">
-        <h2 class="title">
-          <a href="https://github.com/Kilo-Org/kilocode">Kilo-Org/kilocode</a>
-        </h2>
-        <p class="desc-en">Kilo is the all-in-one agentic engineering platform. Build, ship, and iterate faster with the most popular open source coding agent.</p>
-        <p class="desc-zh">Kilo 是一个一体化的代理工程平台，集成了最受欢迎的开源编码代理能力。旨在帮助开发团队通过 AI 代理加速构建、发布和迭代软件产品。</p>
-        <div class="meta">
-          <span class="lang">TypeScript</span>
-          <span>今日 <b>+1,345</b></span>
-          <span>总计 <b>22,383</b></span>
+        <div style="text-align:right; font-family:'JetBrains Mono',monospace">
+          <div style="font-size:18px; font-weight:700; color:#7c2d22">▲613</div>
+          <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; color:#6b6258; margin-top:3px">51,924 ★</div>
         </div>
-        <div class="heat"><span style="width:58%"></span></div>
       </div>
-    </article>
-
-    <article class="repo">
-      <div class="rank">10</div>
-      <div class="body">
-        <h2 class="title">
-          <a href="https://github.com/makeplane/plane">makeplane/plane</a>
-        </h2>
-        <p class="desc-en">Open-source Jira, Linear, Monday, and ClickUp alternative. Plane is a modern project management platform to manage tasks, sprints, docs, and triage.</p>
-        <p class="desc-zh">Plane 是 Jira、Linear 等主流项目管理工具的开源替代方案，提供任务、冲刺、文档与问题分类管理功能。适合追求数据自主可控的团队搭建现代化项目管理平台。</p>
-        <div class="meta">
-          <span class="lang">TypeScript</span>
-          <span>今日 <b>+613</b></span>
-          <span>总计 <b>51,924</b></span>
+<div class="dc-row" style="display:grid; grid-template-columns:78px 1fr auto; gap:24px; align-items:center; padding:22px 0; border-top:1px solid rgba(124,45,34,0.28)">
+        <div style="font-family:'Playfair Display',serif; font-size:54px; font-weight:900; line-height:0.8; color:#7c2d22">6</div>
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:5px; flex-wrap:wrap">
+            <a href="https://github.com/freeCodeCamp/freeCodeCamp" style="font-family:'JetBrains Mono',monospace; font-size:17px; font-weight:700; color:#201f1c; text-decoration:none">freeCodeCamp/freeCodeCamp</a>
+            <span style="font-family:'Noto Sans SC',sans-serif; font-size:10.5px; letter-spacing:0.08em; color:#6b6258">TypeScript</span>
+          </div>
+          <p style="font-family:'Noto Serif SC',serif; font-size:14.5px; line-height:1.5; margin:0; color:#4a463f">freeCodeCamp 是全球最大的免费编程学习平台之一，提供完整的数学、编程与计算机科学课程体系，完全开源，帮助数百万人零成本学习技术技能。</p>
         </div>
-        <div class="heat"><span style="width:26%"></span></div>
+        <div style="text-align:right; font-family:'JetBrains Mono',monospace">
+          <div style="font-size:18px; font-weight:700; color:#7c2d22">▲417</div>
+          <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; color:#6b6258; margin-top:3px">449,645 ★</div>
+        </div>
       </div>
-    </article>
+<div class="dc-row" style="display:grid; grid-template-columns:78px 1fr auto; gap:24px; align-items:center; padding:22px 0; border-top:1px solid rgba(124,45,34,0.28)">
+        <div style="font-family:'Playfair Display',serif; font-size:54px; font-weight:900; line-height:0.8; color:#7c2d22">7</div>
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:5px; flex-wrap:wrap">
+            <a href="https://github.com/n0-computer/iroh" style="font-family:'JetBrains Mono',monospace; font-size:17px; font-weight:700; color:#201f1c; text-decoration:none">n0-computer/iroh</a>
+            <span style="font-family:'Noto Sans SC',sans-serif; font-size:10.5px; letter-spacing:0.08em; color:#6b6258">Rust</span>
+          </div>
+          <p style="font-family:'Noto Serif SC',serif; font-size:14.5px; line-height:1.5; margin:0; color:#4a463f">iroh 是一个用 Rust 编写的模块化网络栈，以「拨号密钥」取代不稳定的 IP 地址，解决连接在 IP 变更时频繁中断的问题，适合构建更稳定的点对点应用。</p>
+        </div>
+        <div style="text-align:right; font-family:'JetBrains Mono',monospace">
+          <div style="font-size:18px; font-weight:700; color:#7c2d22">▲369</div>
+          <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; color:#6b6258; margin-top:3px">10,073 ★</div>
+        </div>
+      </div>
+<div class="dc-row" style="display:grid; grid-template-columns:78px 1fr auto; gap:24px; align-items:center; padding:22px 0; border-top:1px solid rgba(124,45,34,0.28)">
+        <div style="font-family:'Playfair Display',serif; font-size:54px; font-weight:900; line-height:0.8; color:#7c2d22">8</div>
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:5px; flex-wrap:wrap">
+            <a href="https://github.com/alibaba/zvec" style="font-family:'JetBrains Mono',monospace; font-size:17px; font-weight:700; color:#201f1c; text-decoration:none">alibaba/zvec</a>
+            <span style="font-family:'Noto Sans SC',sans-serif; font-size:10.5px; letter-spacing:0.08em; color:#6b6258">C++</span>
+          </div>
+          <p style="font-family:'Noto Serif SC',serif; font-size:14.5px; line-height:1.5; margin:0; color:#4a463f">zvec 是阿里巴巴开源的轻量级进程内向量数据库，以极速性能著称，无需独立部署即可嵌入应用，适合需要向量检索又不想引入重型中间件的场景。</p>
+        </div>
+        <div style="text-align:right; font-family:'JetBrains Mono',monospace">
+          <div style="font-size:18px; font-weight:700; color:#7c2d22">▲259</div>
+          <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; color:#6b6258; margin-top:3px">11,342 ★</div>
+        </div>
+      </div>
+<div class="dc-row" style="display:grid; grid-template-columns:78px 1fr auto; gap:24px; align-items:center; padding:22px 0; border-top:1px solid rgba(124,45,34,0.28)">
+        <div style="font-family:'Playfair Display',serif; font-size:54px; font-weight:900; line-height:0.8; color:#7c2d22">9</div>
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:5px; flex-wrap:wrap">
+            <a href="https://github.com/zai-org/GLM-5" style="font-family:'JetBrains Mono',monospace; font-size:17px; font-weight:700; color:#201f1c; text-decoration:none">zai-org/GLM-5</a>
+            <span style="font-family:'Noto Sans SC',sans-serif; font-size:10.5px; letter-spacing:0.08em; color:#6b6258">—</span>
+          </div>
+          <p style="font-family:'Noto Serif SC',serif; font-size:14.5px; line-height:1.5; margin:0; color:#4a463f">GLM-5 是智谱 AI 最新发布的大语言模型，从「氛围编码」向工程化的代理编程演进，专注更严谨、可工程化落地的 AI 编程能力。</p>
+        </div>
+        <div style="text-align:right; font-family:'JetBrains Mono',monospace">
+          <div style="font-size:18px; font-weight:700; color:#7c2d22">▲202</div>
+          <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; color:#6b6258; margin-top:3px">4,256 ★</div>
+        </div>
+      </div>
+<div class="dc-row" style="display:grid; grid-template-columns:78px 1fr auto; gap:24px; align-items:center; padding:22px 0; border-top:1px solid rgba(124,45,34,0.28)">
+        <div style="font-family:'Playfair Display',serif; font-size:54px; font-weight:900; line-height:0.8; color:#7c2d22">10</div>
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:5px; flex-wrap:wrap">
+            <a href="https://github.com/withastro/flue" style="font-family:'JetBrains Mono',monospace; font-size:17px; font-weight:700; color:#201f1c; text-decoration:none">withastro/flue</a>
+            <span style="font-family:'Noto Sans SC',sans-serif; font-size:10.5px; letter-spacing:0.08em; color:#6b6258">TypeScript</span>
+          </div>
+          <p style="font-family:'Noto Serif SC',serif; font-size:14.5px; line-height:1.5; margin:0; color:#4a463f">flue 是 Astro 团队推出的沙箱代理框架，为 AI 代理提供安全隔离的运行环境，帮助开发者在受控沙箱中构建和运行自主代理应用。</p>
+        </div>
+        <div style="text-align:right; font-family:'JetBrains Mono',monospace">
+          <div style="font-size:18px; font-weight:700; color:#7c2d22">▲162</div>
+          <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; color:#6b6258; margin-top:3px">5,573 ★</div>
+        </div>
+      </div>
 
-    <footer class="foot">
-      数据来源 <a href="https://github.com/trending">github.com/trending</a> ·
-      由 Claude 自动生成 · 生成于 2026-06-19
-    </footer>
-  </main>
+      <!-- ... 直到第 10 名 ... -->
+    </div>
+
+    <!-- ANALYSIS：3 段趋势观察，重复 .dc-trend 块 -->
+    <div style="padding:54px 0 0">
+      <h2 style="font-family:'Noto Serif SC',serif; font-size:30px; font-weight:900; margin:0 0 28px; letter-spacing:0.02em">趋势观察</h2>
+
+      <div class="dc-trend" style="display:grid; grid-template-columns:140px 1fr; gap:28px; padding:26px 0; border-top:1px solid rgba(124,45,34,0.28)">
+        <div>
+          <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#7c2d22; margin-bottom:8px">趋势 · 壹</div>
+          <h3 style="font-family:'Noto Serif SC',serif; font-size:20px; font-weight:700; line-height:1.32; margin:0">Agent 工具链全面铺开</h3>
+        </div>
+        <p style="font-family:'Noto Serif SC',serif; font-size:15.5px; line-height:1.74; margin:0; color:#312f2a">从技能框架（superpowers）、沙箱运行时（flue）到一体化平台（kilocode），AI 代理的配套工具今日集体上榜，表明生态正从「单个模型」走向「完整工具链」的建设阶段。</p>
+      </div>
+<div class="dc-trend" style="display:grid; grid-template-columns:140px 1fr; gap:28px; padding:26px 0; border-top:1px solid rgba(124,45,34,0.28)">
+        <div>
+          <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#7c2d22; margin-bottom:8px">趋势 · 贰</div>
+          <h3 style="font-family:'Noto Serif SC',serif; font-size:20px; font-weight:700; line-height:1.32; margin:0">为 AI 而生的基础设施</h3>
+        </div>
+        <p style="font-family:'Noto Serif SC',serif; font-size:15.5px; line-height:1.74; margin:0; color:#312f2a">codebase-memory-mcp 的代码知识图谱与 alibaba/zvec 的进程内向量库都在为 AI 应用补齐底层检索与记忆能力——给模型装上「长期记忆」正成为新的竞争焦点。</p>
+      </div>
+<div class="dc-trend" style="display:grid; grid-template-columns:140px 1fr; gap:28px; padding:26px 0; border-top:1px solid rgba(124,45,34,0.28)">
+        <div>
+          <div style="font-family:'Noto Sans SC',sans-serif; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#7c2d22; margin-bottom:8px">趋势 · 叁</div>
+          <h3 style="font-family:'Noto Serif SC',serif; font-size:20px; font-weight:700; line-height:1.32; margin:0">务实开源仍是主旋律</h3>
+        </div>
+        <p style="font-family:'Noto Serif SC',serif; font-size:15.5px; line-height:1.74; margin:0; color:#312f2a">freeCodeCamp、plane、iroh 等非 AI 项目稳居榜单，提醒我们高质量基础工具与教育资源的长期需求并未被 AI 热潮掩盖。</p>
+      </div>
+
+      <!-- ... 趋势 · 贰 / 趋势 · 叁 ... -->
+    </div>
+
+    <!-- FOOTER -->
+    <div style="margin-top:54px; border-top:1px solid #7c2d22; padding-top:16px; display:flex; justify-content:space-between; font-family:'Noto Sans SC',sans-serif; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#6b6258">
+      <span>源流 · 趋势日报</span>
+      <span>数据来源 github.com/trending · 2026.06.19</span>
+    </div>
+  </div>
+</div>
 </body>
 </html>
