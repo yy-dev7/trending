@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+  行业动态日报模板
+  ================
+  生成时：复制本文件结构与样式，把数据填入，另存为 news/YYYY-MM-DD.html。
+  内容来自行业博客、科技大佬动态（Twitter/X、个人博客、官方发布等）。
+
+  关键规则：
+  - 每条动态必须给出可点击的来源链接，不要编造链接或事实。
+  - 中文转述要点，并写明「为什么值得关注」。
+  - 抓取来源不足或不确定时，保留顶部 .warning 说明。
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>行业动态日报 · {{DATE}}</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="page-head">
+      <h1>行业动态日报</h1>
+      <div class="sub">{{DATE}} · 来自行业博客与科技人物动态</div>
+      <nav class="nav">
+        <a href="../index.html">← 首页</a>
+        <a href="index.html">全部动态</a>
+        <a href="../reports/index.html">Trending 日报</a>
+      </nav>
+    </header>
+
+    <!-- 数据完整时删除该 .warning 节点 -->
+    <div class="warning">
+      ⚠️ 本期来源可能不完整：{{原因}}。以下内容仅供参考。
+    </div>
+
+    <section class="observation">
+      <strong>今日观察</strong>
+      {{一句话总结当天行业动态的整体趋势}}
+    </section>
+
+    <!-- 重复下面 .repo 块表示每条动态 ---------------------------------- -->
+    <article class="repo">
+      <div class="rank">1</div>
+      <div class="body">
+        <h2 class="title">
+          <a href="{{来源链接}}">{{动态标题 / 一句话主题}}</a>
+        </h2>
+        <p class="desc-zh">{{2–3 句中文转述要点，以及为什么值得关注}}</p>
+        <div class="meta">
+          <span>来源 <b>{{博客名 / 人物 / 机构}}</b></span>
+          <span>{{分类，如「模型发布」「融资」「开源」}}</span>
+        </div>
+      </div>
+    </article>
+    <!-- ... 其余动态条目 ---------------------------------------------- -->
+
+    <footer class="foot">
+      由 Claude 自动汇总 · 生成于 {{DATE}} · 请以原始来源为准
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+  GitHub Trending 日报模板
+  ========================
+  生成日报时：复制本文件的结构与样式，把数据填入对应位置，另存为
+  reports/YYYY-MM-DD.html。下面用 {{ }} 标注占位符，用 <!-- 注释 --> 说明规则。
+
+  关键规则：
+  - 取 daily 窗口、全部语言的 Trending 前 10 名。
+  - 热度条宽度 = 本仓库今日新增 star / 第 1 名今日新增 star × 100%（style="width:NN%"）。
+  - 抓取失败或不足 10 个项目时，保留并填写顶部 .warning，否则删除该节点。
+  - 不要编造仓库或数字；中文描述用自己的话概括，不要照抄英文简介。
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Trending 日报 · {{DATE}}</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="page-head">
+      <h1>GitHub Trending 日报</h1>
+      <div class="sub">{{DATE}} · daily 窗口 · 全部语言 · 前 10 名</div>
+      <nav class="nav">
+        <a href="../index.html">← 首页</a>
+        <a href="index.html">全部日报</a>
+        <a href="../news/index.html">行业动态</a>
+      </nav>
+    </header>
+
+    <!-- 数据完整时删除下面这个 .warning 节点；不完整时保留并说明原因 -->
+    <div class="warning">
+      ⚠️ 本期数据可能不完整：{{原因，例如「抓取仅返回 7 个项目」}}。以下内容仅供参考。
+    </div>
+
+    <section class="observation">
+      <strong>今日观察</strong>
+      {{一句话总结当天热榜整体倾向，例如某类工具集中上榜的现象}}
+    </section>
+
+    <!-- 重复下面 .repo 块 10 次，rank 从 1 到 10 ------------------------- -->
+    <article class="repo">
+      <div class="rank">1</div>
+      <div class="body">
+        <h2 class="title">
+          <a href="https://github.com/{{owner}}/{{repo}}">{{owner}}/{{repo}}</a>
+        </h2>
+        <p class="desc-en">{{官方英文简介，原样保留}}</p>
+        <p class="desc-zh">{{1–2 句中文：是什么、解决什么问题，用自己的话}}</p>
+        <div class="meta">
+          <span class="lang">{{主要语言}}</span>
+          <span>今日 <b>+{{今日新增 star}}</b></span>
+          <span>总计 <b>{{总 star 数}}</b></span>
+        </div>
+        <div class="heat"><span style="width:100%"></span></div>
+      </div>
+    </article>
+
+    <article class="repo">
+      <div class="rank">2</div>
+      <div class="body">
+        <h2 class="title">
+          <a href="https://github.com/owner/repo">owner/repo</a>
+        </h2>
+        <p class="desc-en">Official English description.</p>
+        <p class="desc-zh">用自己的话写的中文功能描述。</p>
+        <div class="meta">
+          <span class="lang">Python</span>
+          <span>今日 <b>+1234</b></span>
+          <span>总计 <b>12,345</b></span>
+        </div>
+        <!-- 宽度 = 1234 / 第1名今日新增 × 100% -->
+        <div class="heat"><span style="width:62%"></span></div>
+      </div>
+    </article>
+    <!-- ... 直到 rank 10 ------------------------------------------------ -->
+
+    <footer class="foot">
+      数据来源 <a href="https://github.com/trending">github.com/trending</a> ·
+      由 Claude 自动生成 · 生成于 {{DATE}}
+    </footer>
+  </main>
+</body>
+</html>
