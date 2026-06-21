@@ -32,7 +32,8 @@
    - `reports/index.html`：在 `<!-- LATEST -->` 标记下方加一条指向今天这份的链接（最新在最上方）。
    - `index.html`（首页）：把 `data-latest="trending"` 那个 `<a>` 的 `href`
      改成 `reports/YYYY-MM-DD.html`（即首页「阅读今日」直达当天报告）。
-6. 提交改动并推送（提交信息：「trending 日报 + 日期」）。
+6. 提交改动并**直接推送到 `main` 分支**（`git push origin main`），提交信息：「trending 日报 + 日期」。
+   这是完全自主运行的定时任务，**不需要创建 PR，不需要人工审核**，直接推 main 即可触发 GitHub Pages 自动部署。
 
 注意：如果抓取失败或不足 10 个项目，在 HTML 顶部明确标注数据可能不完整（保留模板里的
 `.dc-warning` 节点并写明原因），不要编造仓库或数字。
