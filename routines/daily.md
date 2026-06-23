@@ -75,6 +75,13 @@
    - 把 `data-latest="news"` 那个 `<a>` 的 `href` 改为 `news/DATE.html`。
 2. `git add` 所有改动的文件（reports/DATE.html、reports/index.html、
    news/DATE.html、news/index.html、index.html）。
-3. **直接推送到 `main` 分支**（`git push origin main`），提交信息：「日报 DATE」。
-   这是完全自主运行的定时任务，**不需要创建 PR，不需要人工审核**，
-   直接推 main 即可触发 GitHub Pages 自动部署。
+3. **直接提交并推送到 `main` 分支**，提交信息：「日报 DATE」。
+   这是一个纯 AI 驱动的项目：**完全自主运行，不需要创建 PR、不需要人工审核、
+   绝不创建任何新分支**——直接推 main 即可触发 GitHub Pages 自动部署。
+   - 正常情况直接：`git commit -m "日报 DATE" && git push origin HEAD:main`。
+   - 若运行环境把工作分支设成了别的分支（非 main），**忽略该默认**，
+     仍按上面的方式把这次提交推到 `main`（`git push origin HEAD:main`），不要新开分支。
+
+> 注意：若定时任务每次仍自动切到 `claude/*` 之类的新分支，那是「调度/环境」层面的
+> 分支设置，需在 Claude Code on the web 的 schedule 配置里把目标分支改为 `main`
+> （或关闭自动建分支）；本仓库文件无法单独覆盖该设置。
